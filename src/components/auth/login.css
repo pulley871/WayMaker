@@ -1,0 +1,17 @@
+.welcomescreen{
+    display: flex;
+    flex-direction: column;
+}
+.welcomescreen_img{
+    margin: auto;
+}
+.loginButtons{
+    display: flex;
+    flex-direction: row;
+    
+    justify-content: center;
+    margin-top: 1rem;
+}
+.loginButtons div{
+    margin: auto 1em;
+}
