@@ -104,3 +104,8 @@
 #churchProfilePic img{
     border-radius: 60%;
 }
+.search-pic img{
+    height: 3rem;
+    border-radius: 60%;
+    width: 4rem;
+}

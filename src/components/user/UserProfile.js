@@ -27,8 +27,11 @@ export const Profile = () => {
     },[])
     return (<>
     <h1>Profile</h1>
-            <h1>{user.name}</h1>
+            
             <ProfilePic userId={user.id} />
+            <h1>{user.name}</h1>
+            <h5>About {user.name}</h5>
+            <p>{user.description}</p>
             <Table hover>
                 <thead>
                     <th>Church</th>

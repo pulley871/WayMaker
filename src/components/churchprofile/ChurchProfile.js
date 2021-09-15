@@ -6,19 +6,12 @@ import { JobList } from "./ChurchJob"
 import { CloudinaryContext, Image, Transformation } from 'cloudinary-react';
 import axios from "axios"
 import "./ChurchProfile.css"
+import { ProfilePic } from "./ChurchProfilePic"
 export const ChurchProfile = () =>{
-    const {FetchJobsByChurch, jobs} = useContext(JobBoardContext)
-    const [imageSelected, setImageSelected] = useState("")
+    const {FetchJobsByChurch, jobs,FetchChurch} = useContext(JobBoardContext)
+    const [church, setChurch] = useState({})
     const {churchId} = useParams()
-    const uploadImage = () =>{
-        
-        const formData = new FormData()
-        formData.append("file",imageSelected)
-        formData.append("upload_preset", "ubjoump8")
-        formData.append("public_id", `churchpic--${churchId}`)
-        axios.post("https://api.cloudinary.com/v1_1/dcaryjezn/image/upload", formData)
-        .then((response)=>console.log(response))
-    }
+    
     const checkUser = ()=>{
         if (churchId === localStorage.getItem("waymaker_church") && localStorage.getItem("waymaker_user") === null){
             return true
@@ -29,29 +22,19 @@ export const ChurchProfile = () =>{
     useEffect(()=>{
         
         FetchJobsByChurch(parseInt(churchId))
-    },[])
+        FetchChurch(churchId).then(data=>setChurch(data))
+         console.log(church)
+    },[churchId])
     return(<>Your Church
-            <h3>Your Job Posting</h3>
+            
 
 
             {/* PROFILE PICTURE AREA */}
-            <CloudinaryContext cloudName="dcaryjezn">
-                <div id="churchProfilePic">
-                    <Image publicId={`churchpic--${churchId}`} width="100" />
-                    <Transformation fetchFormat="auto"/>
-                </div>
-                    
-            {console.log(imageSelected)}
-            </CloudinaryContext>
-            <div>
-                <Input type="file" onChange={(event)=> setImageSelected(event.target.files[0])}></Input>
-                <Button onClick={()=>{
-                    uploadImage()
-                }}>Submit</Button>
-            </div>
+            <ProfilePic userId={churchId} />
+            <h4>{console.log(church)}</h4>
 
-
-            {/* Profile Picture End */}
+            
+            <h3>Your Job Posting</h3>
             <Table hover>
                 <thead>
                     <th>Church</th>

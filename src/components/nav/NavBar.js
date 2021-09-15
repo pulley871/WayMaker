@@ -2,6 +2,7 @@ import React from "react"
 import { useState } from "react"
 import { Link } from "react-router-dom"
 import { Nav, Navbar, NavbarBrand, NavbarToggler, NavLink, NavItem, Collapse } from "reactstrap"
+import { UserProvider } from "../user/UserProvider"
 import "./NavBar.css"
 import { Search } from "./searchbar/Search"
 export const NavBar = () =>{
@@ -32,7 +33,10 @@ export const NavBar = () =>{
                     Logout</NavLink>
                 </NavItem>
                 <NavItem>
-                    <Search />
+                    <UserProvider>
+                        <Search />
+
+                    </UserProvider>
                 </NavItem>
             </Nav>
             <NavbarBrand href="/">WayMaker</NavbarBrand>
