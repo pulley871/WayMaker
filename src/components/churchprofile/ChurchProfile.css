@@ -1,0 +1,7 @@
+#churchProfilePic{
+    height: 5rem
+
+}
+#churchProfilePic img{
+    border-radius: 60%;
+}

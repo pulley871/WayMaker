@@ -4,6 +4,11 @@ import { createContext } from "react";
 export const UserContext = createContext()
 
 export const UserProvider = (props) =>{
+    const FetchUser = (id)=>{
+        return fetch(`http://localhost:8088/users/${id}`)
+            .then(res => res.json())
+            
+    }
     const FetchUserApplications = (id)=>{
         return fetch(`http://localhost:8088/jobApplications?userId=${id}`)
             .then(res => res.json())
@@ -42,7 +47,7 @@ export const UserProvider = (props) =>{
         return fetch(`http://localhost:8088/jobApplications/${id}`, dataToSend)
      }
     return (<UserContext.Provider value={{
-        FetchUserApplications, FetchApplicationDetails, DeleteApplication,FetchSpecificApplication, EditApplication
+        FetchUser,FetchUserApplications, FetchApplicationDetails, DeleteApplication,FetchSpecificApplication, EditApplication
            }}>
         {props.children}</UserContext.Provider>)
 }

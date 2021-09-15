@@ -1,12 +1,14 @@
 import { useContext, useEffect, useState } from "react"
 import { useParams } from "react-router"
 import { Table } from "reactstrap"
+import { ProfilePic } from "./ProfilePic"
 import { UserApplicationList } from "./UserApplicationList"
 import { UserContext } from "./UserProvider"
 
 export const Profile = () => {
-    const {FetchUserApplications} = useContext(UserContext)
+    const {FetchUserApplications, FetchUser} = useContext(UserContext)
     const [applications, setApplications] = useState([])
+    const [user, setUser] = useState({})
     const {userId} = useParams()
     const checkUser = ()=>{
         if (userId === localStorage.getItem("waymaker_user") && localStorage.getItem("waymaker_church") === null){
@@ -17,6 +19,7 @@ export const Profile = () => {
     }
     const profileData = () =>{
         FetchUserApplications(userId).then((data) => setApplications(data))
+        FetchUser(userId).then((data)=>setUser(data))
         console.log(localStorage.getItem("waymaker_church"))
     }
     useEffect(() => {
@@ -24,7 +27,8 @@ export const Profile = () => {
     },[])
     return (<>
     <h1>Profile</h1>
-            <h1>Applications</h1>
+            <h1>{user.name}</h1>
+            <ProfilePic userId={user.id} />
             <Table hover>
                 <thead>
                     <th>Church</th>
