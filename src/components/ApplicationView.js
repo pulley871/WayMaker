@@ -7,6 +7,9 @@ import { JobApplicationForm } from "./jobBoard/JobApplication";
 import { JobBoard } from "./jobBoard/JobBoard";
 import { JobBoardProvider } from "./jobBoard/JobBoardProvider";
 import { JobForm } from "./jobBoard/JobForm";
+import { SelectedPost } from "./postwall/PostSelected";
+import { PostWall } from "./postwall/PostWall";
+import { PostWallProvider } from "./postwall/PostWallProvider";
 import { EditApplication } from "./user/UserApplicationEdit";
 import { Profile } from "./user/UserProfile";
 import { UserProvider } from "./user/UserProvider";
@@ -47,6 +50,14 @@ export const ApplicationViews = () =>{
                         <Route  path ="/jobpostings/apply/:jobId(\d+)">
                             <JobApplicationForm />
                         </Route>
+                        <PostWallProvider>
+                            <Route path = "/post/:postId(\d+)">
+                                <SelectedPost />
+                            </Route>
+                            <Route exact path="/">
+                                <PostWall/>
+                            </Route>
+                        </PostWallProvider>
                     </UserProvider>
                 </AuthProvider>
             </JobBoardProvider>

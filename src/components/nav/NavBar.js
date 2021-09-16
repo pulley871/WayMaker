@@ -14,7 +14,7 @@ export const NavBar = () =>{
         
         <Navbar color="light" light-expand="md" >
             
-            
+            <NavbarBrand href="/">WayMaker</NavbarBrand>
             <Nav className="mr-auto" >
                 <NavItem>
                     <NavLink className="navlink"href="/jobpostings">Job Postings</NavLink>
@@ -39,7 +39,7 @@ export const NavBar = () =>{
                     </UserProvider>
                 </NavItem>
             </Nav>
-            <NavbarBrand href="/">WayMaker</NavbarBrand>
+            
         </Navbar>
         
         // <ul className="navbar navbar-light bg-light navbar-expand-lg">

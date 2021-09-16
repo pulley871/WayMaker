@@ -1,0 +1,22 @@
+#toggler {
+    text-decoration: none;
+}
+.card {
+    align-items: flex-start;
+    z-index: 0;
+}
+#comment-button{
+    margin-top: .5rem;
+    
+}
+#comment-list-container{
+    margin-top: 1rem;
+}
+.post-container{
+    display: flex;
+    
+}
+#post-link{
+    text-decoration: none;
+    color: black;
+}

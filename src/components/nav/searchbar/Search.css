@@ -72,15 +72,18 @@
     border-radius: 5px;
     overflow-y: auto;
     width: 13.5rem;
+    z-index: 1;
 }
 .instant-search__result{
     display: flex;
+    position: relative;
     justify-content: flex-start;
     color: #333333;
     text-decoration: none;
     padding: 10px;
     font-size: 0.8em;
     cursor: pointer;
+    z-index: 1;
 }
 .instant-search__result:hover {
     background: #eeeeee;

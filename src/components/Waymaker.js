@@ -14,7 +14,7 @@ export const WayMaker = () => {
                         return (
                             <>
                             <NavBar />
-                            <h1>WayMaker</h1>
+                            
                             <ApplicationViews />
                             </>
                         )
