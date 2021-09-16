@@ -7,9 +7,10 @@ import { CloudinaryContext, Image, Transformation } from 'cloudinary-react';
 import axios from "axios"
 import "./ChurchProfile.css"
 import { ProfilePic } from "./ChurchProfilePic"
+
 export const ChurchProfile = () =>{
-    const {FetchJobsByChurch, jobs,FetchChurch} = useContext(JobBoardContext)
-    const [church, setChurch] = useState({})
+    const {FetchJobsByChurch, jobs,FetchChurch, church} = useContext(JobBoardContext)
+    
     const {churchId} = useParams()
     
     const checkUser = ()=>{
@@ -22,17 +23,16 @@ export const ChurchProfile = () =>{
     useEffect(()=>{
         
         FetchJobsByChurch(parseInt(churchId))
-        FetchChurch(churchId).then(data=>setChurch(data))
-         console.log(church)
+        FetchChurch(churchId)
     },[churchId])
-    return(<>Your Church
+    return(<>
             
 
-
+            <section id={`churchprofile-header`}>
             {/* PROFILE PICTURE AREA */}
-            <ProfilePic userId={churchId} />
-            <h4>{console.log(church)}</h4>
-
+            <ProfilePic userId={churchId} check={checkUser}/>
+            <h2>{church.name}</h2>
+            </section>
             
             <h3>Your Job Posting</h3>
             <Table hover>

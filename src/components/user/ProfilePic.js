@@ -2,7 +2,7 @@ import { useContext, useEffect, useState } from "react"
 import { Input,  Button } from "reactstrap"
 import { UserContext } from "./UserProvider";
 import "./UserProfile.css"
-export const ProfilePic = ({userId}) => {
+export const ProfilePic = ({userId, check}) => {
     const [imageSelected, setImageSelected] = useState("")
     const [profilePic, setProfilePic] = useState({})
     const {FetchPictures, UploadPicture } = useContext(UserContext)
@@ -15,13 +15,14 @@ export const ProfilePic = ({userId}) => {
                 {profilePic !== undefined?<img src={profilePic?.pictureURL} alt={profilePic.userId}/> : ""}
             </div>
             <div id="profile-pic__buttons">
-                {profilePic !== undefined ? "" :<>
+                {check() ? <>{profilePic !== undefined ? "" :<>
                 <Input type="file" onChange={(event)=> setImageSelected(event.target.files[0])}></Input>
                 <Button onClick={()=>{
                     
                     UploadPicture(imageSelected, userId, false)
                 }}>Submit</Button>
-</>}
+</>}</>:""}
+                
             </div>
             </>
     )

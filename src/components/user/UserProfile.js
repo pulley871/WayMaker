@@ -28,7 +28,7 @@ export const Profile = () => {
     return (<>
     <h1>Profile</h1>
             
-            <ProfilePic userId={user.id} />
+            <ProfilePic userId={user.id} check={checkUser}/>
             <h1>{user.name}</h1>
             <h5>About {user.name}</h5>
             <p>{user.description}</p>

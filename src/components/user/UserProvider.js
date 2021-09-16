@@ -9,11 +9,7 @@ export const UserProvider = (props) =>{
             .then(res => res.json())
             
     }
-    const FetchChurch = (id)=>{
-        return fetch(`http://localhost:8088/churches/${id}`)
-            .then(res => res.json())
-            
-    }
+    
     const FetchUserApplications = (id)=>{
         return fetch(`http://localhost:8088/jobApplications?userId=${id}`)
             .then(res => res.json())
@@ -106,7 +102,7 @@ export const UserProvider = (props) =>{
         return fetch(`http://localhost:8088/jobApplications/${id}`, dataToSend)
      }
     return (<UserContext.Provider value={{
-        FetchChurch,FetchPictures,UploadPicture, FetchUser,FetchUserApplications, FetchApplicationDetails, DeleteApplication,FetchSpecificApplication, EditApplication
+        FetchPictures,UploadPicture, FetchUser,FetchUserApplications, FetchApplicationDetails, DeleteApplication,FetchSpecificApplication, EditApplication
            }}>
         {props.children}</UserContext.Provider>)
 }

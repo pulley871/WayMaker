@@ -1,7 +1,14 @@
-#churchProfilePic{
-    height: 5rem
-
+#churchProfile-pic{
+    margin-bottom: 2rem;
 }
-#churchProfilePic img{
-    border-radius: 60%;
+#churchProfile-pic img{
+    height: 15rem;
+    border-radius: 100%;
+    border: 5px solid rgb(74, 74, 226);
+    box-shadow: 5px 15px 20px rgba(37, 68, 119, 0.4);
+}
+#churchprofile-header{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
 }
