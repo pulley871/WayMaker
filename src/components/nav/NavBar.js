@@ -5,6 +5,8 @@ import { Nav, Navbar, NavbarBrand, NavbarToggler, NavLink, NavItem, Collapse } f
 import { UserProvider } from "../user/UserProvider"
 import "./NavBar.css"
 import { Search } from "./searchbar/Search"
+import Logo from "../../images/Logo.png"
+
 export const NavBar = () =>{
     const currentChurch = localStorage.getItem("waymaker_church")
     const [isOpen, setIsOpen] = useState(false);
@@ -14,17 +16,20 @@ export const NavBar = () =>{
         
         <Navbar color="light" light-expand="md" >
             
-            <NavbarBrand href="/">WayMaker</NavbarBrand>
+            <NavbarBrand href="/">
+            <img id="navpic"src={Logo}></img>
+            WayMaker
+            </NavbarBrand>
             <Nav className="mr-auto" >
-                <NavItem>
-                    <NavLink className="navlink"href="/jobpostings">Job Postings</NavLink>
-                </NavItem>
                 <NavItem>
                     {currentChurch ? 
                             <NavLink href={`/churchprofile/${localStorage.getItem("waymaker_church")}`}>Your Church</NavLink>
                             :
                             <NavLink href={`/profile/${localStorage.getItem("waymaker_user")}`}>Your Profile</NavLink>
                 }
+                </NavItem>
+                <NavItem>
+                    <NavLink className="navlink "href="/jobpostings">Job Postings</NavLink>
                 </NavItem>
                 <NavItem>
                     <NavLink href="/login" onClick={()=>{

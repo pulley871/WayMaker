@@ -4,10 +4,11 @@ import { JobBoardContext } from "../jobBoard/JobBoardProvider"
 import { CommentList } from './CommentList';
 import { PostWallContext } from './PostWallProvider';
 import "./PostWall.css"
+import { Link } from 'react-router-dom';
 export const Post = ({post}) => {
     const [comments, setComments] = useState([])
     const {FetchChurch, church, } = useContext(JobBoardContext)
-    const {FetchComments} = useContext(PostWallContext)
+    const {FetchComments, DeletePost, FetchPosts} = useContext(PostWallContext)
     useEffect(()=>{
         FetchChurch(post.churchId)
         FetchComments(post.id).then((data)=>setComments(data))
@@ -17,7 +18,7 @@ export const Post = ({post}) => {
         
         <Card >
             <div className="post-container">
-            <iframe src="https://www.youtube.com/embed/I6cpY-RY4X8"
+            <iframe src={post.videoUrl}
             title="YouTube video player" 
             frameBorder="0" 
             allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" 
@@ -33,7 +34,17 @@ export const Post = ({post}) => {
                 <CommentList comments={comments} button={true}/>
                 
             </CardText>
-            
+            {post.churchId === parseInt(localStorage.getItem("waymaker_church")) ?
+            <div id="postcardbuttons">
+                <Link to="#" onClick={()=>{
+                    DeletePost(post.id).then(()=>FetchPosts())
+                }}>
+                    <span class="material-icons">delete</span>
+                </Link>
+                <Link to={`/editpost/${post.id}`}>
+                    <span class="material-icons">edit</span>
+                </Link>
+            </div>:""}
         </Card>
     </div>)
 }

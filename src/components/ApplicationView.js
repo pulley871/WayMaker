@@ -7,6 +7,8 @@ import { JobApplicationForm } from "./jobBoard/JobApplication";
 import { JobBoard } from "./jobBoard/JobBoard";
 import { JobBoardProvider } from "./jobBoard/JobBoardProvider";
 import { JobForm } from "./jobBoard/JobForm";
+import { EditPost } from "./postwall/EditPost";
+import { NewPostForm } from "./postwall/NewPost";
 import { SelectedPost } from "./postwall/PostSelected";
 import { PostWall } from "./postwall/PostWall";
 import { PostWallProvider } from "./postwall/PostWallProvider";
@@ -56,6 +58,12 @@ export const ApplicationViews = () =>{
                             </Route>
                             <Route exact path="/">
                                 <PostWall/>
+                            </Route>
+                            <Route path="/newpost">
+                                <NewPostForm />
+                            </Route>
+                            <Route path="/editpost/:postId(\d+)">
+                                <EditPost />
                             </Route>
                         </PostWallProvider>
                     </UserProvider>

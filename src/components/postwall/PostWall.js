@@ -1,25 +1,29 @@
 import { useContext, useState, useEffect } from "react"
-import { Link } from "react-router-dom"
-import { CardGroup } from "reactstrap"
+import { Link, useHistory } from "react-router-dom"
+import { Button, CardGroup } from "reactstrap"
 import { Post } from "./Post"
 import { PostWallContext } from "./PostWallProvider"
 
 
 
 export const PostWall = () =>{
-    const {FetchPosts, FetchComments} = useContext(PostWallContext)
-    const[posts, setPost]=useState([])
+    const {FetchPosts, FetchComments, posts} = useContext(PostWallContext)
+    
     const[comments, setComments]= useState([])
-
+    const history = useHistory()
     useEffect(() => {
-        FetchPosts().then((data)=> setPost(data))
-        FetchComments().then((data)=> setComments(data))
+        FetchPosts()
+        
     }, [])
+    useEffect(() =>{
+        FetchComments().then((data)=> setComments(data))
+    }, [posts])
     return(<>
-            <h1>Church Posts</h1>
-            
+            <h1>Welcome Back To WayMaker</h1>
+            <h3>Recent Post</h3>
+            <Button size="lg"color="primary" onClick={()=> history.push("/newpost")}>Post</Button>
             <CardGroup>
-            {posts.map((post) =>{
+            {posts?.map((post) =>{
                 return (<Link id="post-link" to={`/post/${post.id}`}><Post post={post}/></Link>)
             })}
             </CardGroup>

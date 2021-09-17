@@ -32,7 +32,7 @@ export const SelectedPost = () =>{
     return(
         <div>
         <Card >
-            <iframe src="https://www.youtube.com/embed/I6cpY-RY4X8"
+            <iframe src={post.videoUrl}
             title="YouTube video player" 
             frameBorder="0" 
             allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" 
