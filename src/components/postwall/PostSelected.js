@@ -7,11 +7,12 @@ import { Card, CardBody, Button, CardTitle, CardText, CardImg, Media, Form, Form
 import "./PostWall.css"
 export const SelectedPost = () =>{
     const {postId} = useParams()
-    const [comments, setComments] = useState([])
+    
     const [post, setPost] = useState({})
     const [comment, setComment] = useState("")
     const {FetchChurch, church, } = useContext(JobBoardContext)
     const {FetchComments, FetchPost, PostComments} = useContext(PostWallContext)
+    const [comments, setComments] = useState([])
     const checkUser = ()=>{
         if (localStorage.getItem("waymaker_user") && localStorage.getItem("waymaker_church") === null){
             return true
@@ -19,12 +20,15 @@ export const SelectedPost = () =>{
             return false
         }
     }
+    const update = () =>{
+        FetchComments(postId).then((data) => setComments(data.reverse()))
+    }
     useEffect(() =>{
         FetchPost(postId).then((data) =>setPost(data))
+        update()
     },[postId])
     useEffect(()=>{
         FetchChurch(post.churchId)
-        FetchComments(post.id).then((data)=>setComments(data.reverse()))
     },[post])
     useEffect(() =>{
         setComment("")
@@ -58,14 +62,14 @@ export const SelectedPost = () =>{
                         description: comment
                     }
                     
-                    PostComments(object).then(()=> FetchComments(post.id).then((data)=>setComments(data)))
+                    PostComments(object).then(()=> update())
                 }}>Add Comment</Button>
                 
             </FormGroup>
         </Form>
         : ""}
         <div id="comment-list-container">
-            <CommentList comments={comments} button={false}/>
+            <CommentList  comments={comments} update={update}button={false} postId={post.id}/>
         </div>
     </div>
     )

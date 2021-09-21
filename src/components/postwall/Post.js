@@ -5,14 +5,20 @@ import { CommentList } from './CommentList';
 import { PostWallContext } from './PostWallProvider';
 import "./PostWall.css"
 import { Link } from 'react-router-dom';
+import { CommentProvider } from './CommentProvider';
 export const Post = ({post}) => {
     const [comments, setComments] = useState([])
     const {FetchChurch, church, } = useContext(JobBoardContext)
     const {FetchComments, DeletePost, FetchPosts} = useContext(PostWallContext)
+    const update = () =>{
+        FetchComments(post.id).then((data) => setComments(data.reverse()))
+    }
     useEffect(()=>{
         FetchChurch(post.churchId)
-        FetchComments(post.id).then((data)=>setComments(data))
+        update()
+        
     },[post])
+    
   return (
     <div>
         
@@ -31,8 +37,9 @@ export const Post = ({post}) => {
             </div>
             
             <CardText>
-                <CommentList comments={comments} button={true}/>
-                
+                <CommentProvider>
+                    <CommentList update={update}comments={comments}postId={post.id} button={true}/>
+                </CommentProvider>
             </CardText>
             {post.churchId === parseInt(localStorage.getItem("waymaker_church")) ?
             <div id="postcardbuttons">

@@ -19,6 +19,10 @@ export const JobLayout = ({job}) =>{
     useEffect(() => {
         isAppliedCheck()
     }, [jobApplications])
+    const dateConverter = (timeStamp ) =>{
+        let date = new Date(timeStamp*1000)
+        return`${date.getDate()}/${date.getMonth()+1}/${date.getFullYear()}`
+    }
     const isAppliedCheck = () => {
         if (jobApplications.length > 0){
             
@@ -36,6 +40,8 @@ export const JobLayout = ({job}) =>{
                     <td>{job.church?.zipCode}</td>
                     <td>{job?.positionTitle}</td>
                     <td>{job.church?.email}</td>
+                    <td>{job.jobApplications.length}</td>
+                    <td>{dateConverter(job.datePosted)}</td>
                     {currentChurch  ? <td>{parseInt(currentChurch) === job.churchId ? 
                     <><Button color="warning"onClick={()=>{
                         history.push(`/jobpostings/edit/${job.id}`)

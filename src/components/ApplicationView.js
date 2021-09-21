@@ -7,6 +7,7 @@ import { JobApplicationForm } from "./jobBoard/JobApplication";
 import { JobBoard } from "./jobBoard/JobBoard";
 import { JobBoardProvider } from "./jobBoard/JobBoardProvider";
 import { JobForm } from "./jobBoard/JobForm";
+import { EditComment } from "./postwall/EditComment";
 import { EditPost } from "./postwall/EditPost";
 import { NewPostForm } from "./postwall/NewPost";
 import { SelectedPost } from "./postwall/PostSelected";
@@ -64,6 +65,9 @@ export const ApplicationViews = () =>{
                             </Route>
                             <Route path="/editpost/:postId(\d+)">
                                 <EditPost />
+                            </Route>
+                            <Route path="/editcomment/:commentId(\d+)">
+                                <EditComment />
                             </Route>
                         </PostWallProvider>
                     </UserProvider>

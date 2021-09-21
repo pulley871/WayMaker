@@ -9,3 +9,6 @@
     border: 2px solid rgb(9, 126, 244);
     box-shadow: 5px 15px 20px rgba(37, 68, 119, 0.4);
 }
+.navlogo {
+    margin-left: 2rem;
+}

@@ -7,11 +7,19 @@ export const JobBoardProvider = (props) =>{
     const [applications, setApplications] = useState([])
     const [jobApplications, setJobApplication] = useState([])
     const [church, setChurch] = useState([])
-    const FetchJobs = ()=>{
-        return fetch("http://localhost:8088/jobPostings?_expand=church")
+    const [searchTerm, setSearchTerm] = useState("")
+    const FetchSearchedJobs = (term) => {
+        return fetch(`http://localhost:8088/jobPostings?_expand=church&positionTitle_like=${term}&description_like=${term}&_embed=jobApplications`)
             .then(res => res.json())
             .then((data) => {
                 setJobs(data)
+            })
+    }
+    const FetchJobs = ()=>{
+        return fetch("http://localhost:8088/jobPostings?_sort=datePosted&_expand=church&_embed=jobApplications")
+            .then(res => res.json())
+            .then((data) => {
+                setJobs(data.reverse())
             })
     }
     const FetchJob = (id)=>{
@@ -112,7 +120,7 @@ export const JobBoardProvider = (props) =>{
         return fetch(`http://localhost:8088/jobPostings/${id}`, dataToSend)
      }
     return (<JobBoardContext.Provider value={{
-        applications,jobs,church,jobApplications, FetchJobs,FetchJob, FetchApplications, FetchJobsByChurch, FetchChurch,FetchJobApplications, PostJob, PostApplication, DeleteJob, RemoveJobApplications, EditJobPosting
+        applications,jobs,church,jobApplications,searchTerm,setJobs, setSearchTerm, FetchJobs,FetchJob, FetchApplications, FetchJobsByChurch, FetchChurch,FetchJobApplications, PostJob, PostApplication, DeleteJob, RemoveJobApplications, EditJobPosting,FetchSearchedJobs
     }}>
         {props.children}
     </JobBoardContext.Provider>)

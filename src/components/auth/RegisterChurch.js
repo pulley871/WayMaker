@@ -24,7 +24,7 @@ export const RegisterChurch = () =>{
     },[email])
 
     return (<>
-        <h1>WayMaker Church Regristration</h1>
+        <h1>WayMaker Church Registration</h1>
         <Form>
             <FormGroup>
                 <Label for="useremail">Churches Email </Label>

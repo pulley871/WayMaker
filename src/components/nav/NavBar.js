@@ -16,7 +16,7 @@ export const NavBar = () =>{
         
         <Navbar color="light" light-expand="md" >
             
-            <NavbarBrand href="/">
+            <NavbarBrand href="/" className="navlogo">
             <img id="navpic"src={Logo}></img>
             WayMaker
             </NavbarBrand>

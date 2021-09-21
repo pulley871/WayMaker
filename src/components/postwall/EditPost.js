@@ -12,7 +12,7 @@ export const EditPost = () => {
     const [postURL, setURL] = useState("")
     const {FetchChurch, church} = useContext(JobBoardContext)
     const [post, setPost] = useState({})
-    const {PostPost, FetchPosts, FetchPost} = useContext(PostWallContext)
+    const {EditWallPost, FetchPosts, FetchPost} = useContext(PostWallContext)
     const churchId = parseInt(localStorage.getItem("waymaker_church"))
     const [tooltipOpen, setTooltipOpen] = useState(false)
     const toggle = () => setTooltipOpen(!tooltipOpen);
@@ -53,8 +53,8 @@ export const EditPost = () => {
                     description: postDescription,
                     videoUrl: postURL
                 }
-                PostPost(postObject).then(()=> FetchPosts()).then(()=> history.push("/"))
-            }}>POST!</Button>
+                EditWallPost(post.id,postObject).then(()=> FetchPosts()).then(()=> history.push("/"))
+            }}>Edit!</Button>
     </>)
 }
 // {

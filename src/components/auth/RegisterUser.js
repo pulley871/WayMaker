@@ -24,7 +24,7 @@ export const RegisterUser = () =>{
     },[email])
 
     return (<>
-        <h1>WayMaker User Regristration</h1>
+        <h1>WayMaker User Registration</h1>
         <Form>
             <FormGroup>
                 <Label for="useremail">Your Email </Label>
