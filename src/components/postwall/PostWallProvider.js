@@ -8,22 +8,22 @@ export const PostWallProvider = (props) => {
     const [comments, setComments] = useState([])
     
     const FetchPost = (id)=>{
-        return fetch(`http://localhost:8088/wallPosts/${id}`)
+        return fetch(`https://waymaker-api-bdy6w.ondigitalocean.app/wallPosts/${id}`)
             .then(res => res.json())
             
     }
     const FetchPosts = ()=>{
-        return fetch("http://localhost:8088/wallPosts")
+        return fetch("https://waymaker-api-bdy6w.ondigitalocean.app/wallPosts")
             .then(res => res.json())
             .then((data)=>setPost(data))
     }
     const FetchComments = (postId) => {
-        return fetch(`http://localhost:8088/comments?wallPostId=${postId}`)
+        return fetch(`https://waymaker-api-bdy6w.ondigitalocean.app/comments?wallPostId=${postId}`)
             .then(res => res.json())
             
     }
     const FetchCommentForEdit = (commentId) => {
-        return fetch(`http://localhost:8088/comments/${commentId}`)
+        return fetch(`https://waymaker-api-bdy6w.ondigitalocean.app/comments/${commentId}`)
             .then(res => res.json())
             
     }
@@ -36,7 +36,7 @@ export const PostWallProvider = (props) => {
             body: JSON.stringify(object)
         }
         
-        return fetch("http://localhost:8088/comments", fetchOption)
+        return fetch("https://waymaker-api-bdy6w.ondigitalocean.app/comments", fetchOption)
             
     }
     const PostPost = (object) => {
@@ -48,11 +48,11 @@ export const PostWallProvider = (props) => {
             body: JSON.stringify(object)
         }
         
-        return fetch("http://localhost:8088/wallPosts", fetchOption)
+        return fetch("https://waymaker-api-bdy6w.ondigitalocean.app/wallPosts", fetchOption)
             
     }
     const DeletePost = (id) =>{
-        return (fetch(`http://localhost:8088/wallPosts/${id}`, {
+        return (fetch(`https://waymaker-api-bdy6w.ondigitalocean.app/wallPosts/${id}`, {
         method: "DELETE",
         headers: {
             "Content-Type": "application/json"
@@ -73,10 +73,10 @@ export const PostWallProvider = (props) => {
             })
 
         }
-        return fetch(`http://localhost:8088/wallPosts/${id}`, dataToSend)
+        return fetch(`https://waymaker-api-bdy6w.ondigitalocean.app/wallPosts/${id}`, dataToSend)
      }
      const DeleteComment = (id) =>{
-        return (fetch(`http://localhost:8088/comments/${id}`, {
+        return (fetch(`https://waymaker-api-bdy6w.ondigitalocean.app/comments/${id}`, {
         method: "DELETE",
         headers: {
             "Content-Type": "application/json"
@@ -95,7 +95,7 @@ export const PostWallProvider = (props) => {
             })
 
         }
-        return fetch(`http://localhost:8088/comments/${id}`, dataToSend)
+        return fetch(`https://waymaker-api-bdy6w.ondigitalocean.app/comments/${id}`, dataToSend)
      }
     return (<PostWallContext.Provider value={{
         FetchPosts, FetchComments,FetchCommentForEdit, FetchPost, PostComments, PostPost, DeletePost,EditWallPost,EditPostComment, DeleteComment, posts, comments

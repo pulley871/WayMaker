@@ -15,7 +15,7 @@ export const Search =() => {
     const search = ()=>{
         let arr = []
         if (searchTerm !== ""){
-             fetch(`http://localhost:8088/users?name_like=${encodeURI(searchTerm)}`)
+             fetch(`https://waymaker-api-bdy6w.ondigitalocean.app/users?name_like=${encodeURI(searchTerm)}`)
                     .then(res => res.json())
                     .then((data) => {
                         const stuff = data.map((item)=> {
@@ -24,7 +24,7 @@ export const Search =() => {
                         return Promise.all(stuff)
                     })
             
-            .then(fetch(`http://localhost:8088/churches?name_like=${encodeURI(searchTerm)}`)
+            .then(fetch(`https://waymaker-api-bdy6w.ondigitalocean.app/churches?name_like=${encodeURI(searchTerm)}`)
                     .then(res => res.json())
                     .then((data) => {
                         const stuff = data.map((item)=> {
