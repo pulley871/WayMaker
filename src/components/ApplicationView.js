@@ -2,6 +2,7 @@ import { Route } from "react-router";
 import { Applications } from "./applications/Application";
 import { AuthProvider } from "./auth/AuthProvider";
 import { ChurchProfile } from "./churchprofile/ChurchProfile";
+import { ChurchProfileEdit } from "./churchprofile/ChurchProfilEdit";
 import { EditJobPosting } from "./jobBoard/EditJob";
 import { JobApplicationForm } from "./jobBoard/JobApplication";
 import { JobBoard } from "./jobBoard/JobBoard";
@@ -15,6 +16,7 @@ import { PostWall } from "./postwall/PostWall";
 import { PostWallProvider } from "./postwall/PostWallProvider";
 import { EditApplication } from "./user/UserApplicationEdit";
 import { Profile } from "./user/UserProfile";
+import { UserProfileEdit } from "./user/UserProfileEdit";
 import { UserProvider } from "./user/UserProvider";
 
 export const ApplicationViews = () =>{
@@ -41,12 +43,13 @@ export const ApplicationViews = () =>{
                         <Route exact path ="/profile/:userId(\d+)">
                             <Profile />
                         </Route>
-                        <Route path ="/profile/editprofile/:userId(\d+)">
-
+                        <Route path ="/editchurchprofile/:churchId(\d+)">
+                            <ChurchProfileEdit />
                         </Route>
-                        <Route path ="/profile/editApplication/:applicationId(\d+)">
-
+                        <Route path ="/edituserprofile/:userId(\d+)">
+                            <UserProfileEdit />
                         </Route>
+                        
                         <Route  path ="/jobpostings/post">
                             <JobForm />
                         </Route>

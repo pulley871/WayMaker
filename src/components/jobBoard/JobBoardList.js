@@ -7,27 +7,27 @@ export const JobList= ({alljobs, setJobs}) =>{
     const currentChurch = localStorage.getItem("waymaker_church")
     const [upDownArrow, setArrow] = useState("up")
     
-    useEffect(() => {
-        if(upDownArrow === "up"){
-            setJobs(alljobs.sort((a,b) => {return a.datePosted - b.datePosted}))
-            console.log(alljobs)
-        }else{
-            setJobs(alljobs.sort((a,b) => {return b.datePosted - a.datePosted}))
-        }
-    }, [upDownArrow])
+    
     return (<>
-        <Table hover>
+        <Table hover id="job-board-table">
             <thead>
                 <th>Church</th>
                 <th> Zip Code </th>
                 <th>Position</th>
+                <th>Job Description</th>
                 <th>Contact Info</th>
                 <th>Total Applicants</th>
                 <th><Link to="#"onClick={()=>{
                     switch(upDownArrow){
-                        case "down": setArrow("up")
+                        case "down": {
+                            setArrow("up")
+                            setJobs(alljobs.sort((a,b) => {return a.datePosted - b.datePosted}))
+                        }
                         break;
-                        case "up": setArrow("down")
+                        case "up": {
+                            setArrow("down")
+                            setJobs(alljobs.sort((a,b) => {return b.datePosted - a.datePosted}))
+                        }
                         break;
                     }
                 }}>Post Date{upDownArrow === "down"? <span class="material-icons">

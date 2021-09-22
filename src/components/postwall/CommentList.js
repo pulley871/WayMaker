@@ -15,7 +15,7 @@ return(
 
     
   <>
-  {console.log(comments.length)}
+  
     {button ? <div className="post-comments-container"><Button  color="link" id="toggler" style={{ marginBottom: '1rem' }}>
       {comments?.length} Comments
     </Button>

@@ -8,6 +8,14 @@ export const JobBoardProvider = (props) =>{
     const [jobApplications, setJobApplication] = useState([])
     const [church, setChurch] = useState([])
     const [searchTerm, setSearchTerm] = useState("")
+    const JsXString = (string) => {
+        
+        const newString = string.split("\n")
+        return (<div>{newString.map((sentence) => {
+            return  (<p>{sentence} <br/></p>)
+        }).join("")}</div>)
+        
+    }
     const FetchSearchedJobs = (term) => {
         return fetch(`http://localhost:8088/jobPostings?_expand=church&positionTitle_like=${term}&description_like=${term}&_embed=jobApplications`)
             .then(res => res.json())
@@ -119,8 +127,24 @@ export const JobBoardProvider = (props) =>{
         }
         return fetch(`http://localhost:8088/jobPostings/${id}`, dataToSend)
      }
+     const EditProfile = (id, object, isUser ) =>{
+        const dataToSend = {
+            method: "PATCH",
+            headers: {
+                "Content-Type": "application/json"
+            },
+            body: JSON.stringify(object)
+
+        }
+        if (isUser){
+            return fetch(`http://localhost:8088/users/${id}`, dataToSend)
+        }else{
+            return fetch(`http://localhost:8088/churches/${id}`, dataToSend)
+        }
+        
+     }
     return (<JobBoardContext.Provider value={{
-        applications,jobs,church,jobApplications,searchTerm,setJobs, setSearchTerm, FetchJobs,FetchJob, FetchApplications, FetchJobsByChurch, FetchChurch,FetchJobApplications, PostJob, PostApplication, DeleteJob, RemoveJobApplications, EditJobPosting,FetchSearchedJobs
+        applications,jobs,church,jobApplications,searchTerm,setJobs, setSearchTerm, FetchJobs,FetchJob, FetchApplications, FetchJobsByChurch, FetchChurch,FetchJobApplications, PostJob, PostApplication, DeleteJob, RemoveJobApplications, EditJobPosting,FetchSearchedJobs, JsXString, EditProfile
     }}>
         {props.children}
     </JobBoardContext.Provider>)

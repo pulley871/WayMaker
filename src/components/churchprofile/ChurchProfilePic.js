@@ -10,18 +10,21 @@ export const ProfilePic = ({userId, check}) => {
     useEffect(()=>{
         FetchPictures(userId, true).then((data)=> setProfilePic(data[0]))
     },[userId])
-    return(<>{console.log(profilePic)}
+    return(<>
             <div id="churchProfile-pic">
                 {profilePic !== undefined?<img src={profilePic?.pictureURL} alt={profilePic.churchId}/> : ""}
             </div>
             <div id="churchProfile-pic__buttons">
-                {check() ? <>{profilePic !== undefined ? "" :<>
+                {check() ? <>{profilePic !== undefined ?
+                 "" :
+                 <>
                 <Input type="file" onChange={(event)=> setImageSelected(event.target.files[0])}></Input>
                 <Button onClick={()=>{
                     
                     UploadPicture(imageSelected, userId, true)
                 }}>Submit</Button>
-                </>}</>: ""}
+                </>}</>
+                : ""}
                 
             </div>
             </>

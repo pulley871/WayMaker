@@ -11,7 +11,7 @@ export const JobList = ({job, userCheck}) =>{
     const history = useHistory()
     useEffect(()=>{
         FetchJobApplications(job.id).then((data)=> setApplications(data))
-        console.log(applications)
+        
     },[])
     return(<>
     
@@ -21,15 +21,19 @@ export const JobList = ({job, userCheck}) =>{
                     <td>{job?.positionTitle}</td>
                     <td>{job.church?.email}</td>
                     
-                    <td><Button color="primary" onClick={()=>{
+                    <td><Button color="primary" onClick={ () => {
                         history.push(`/applications/${job.id}`)
                     }}><Badge  info>{applications.length}</Badge></Button></td>
-                    {userCheck() ? <td> <Button color="warning"onClick={()=>{
+                    {userCheck() ? 
+                    <td> <Button color="warning"onClick={ () => {
                         history.push(`/jobpostings/edit/${job.id}`)
-                    }}>Edit</Button></td>:""}
-                    {userCheck() ? <td><Button color="danger"onClick={()=>
+                    }}>Edit</Button></td>
+                    :""}
+                    {userCheck() ? 
+                    <td><Button color="danger"onClick={ () =>
                        RemoveJobApplications(job.id).then( () => DeleteJob(job.id)).then(()=>FetchJobsByChurch(parseInt(localStorage.getItem("waymaker_church"))))
-                        }>Delete</Button></td>:""}
+                        }>Delete</Button></td>
+                        :""}
                     
                 </tr>
     </>)

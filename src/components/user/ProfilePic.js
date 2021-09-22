@@ -10,7 +10,7 @@ export const ProfilePic = ({userId, check}) => {
     useEffect(()=>{
         FetchPictures(userId, false).then((data)=> setProfilePic(data[0]))
     },[userId])
-    return(<>{console.log(profilePic)}
+    return(<>
             <div id="profile-pic">
                 {profilePic !== undefined?<img src={profilePic?.pictureURL} alt={profilePic.userId}/> : ""}
             </div>

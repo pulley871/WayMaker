@@ -2,7 +2,8 @@ import { Badge, Button } from "reactstrap"
 import { Link, useHistory } from "react-router-dom"
 import { useEffect, useContext, useState } from "react"
 import { JobBoardContext } from "./JobBoardProvider"
-
+import DescirptionPopUp from "./JobDescriptionPopUp"
+import "./JobBoard.css"
 
 export const JobLayout = ({job}) =>{
     const currentChurch = localStorage.getItem("waymaker_church")
@@ -34,19 +35,20 @@ export const JobLayout = ({job}) =>{
     return (<>
         
             
-                {console.log(job)}
+                
                 <tr>
                     <td>{job.church?.name}</td>
                     <td>{job.church?.zipCode}</td>
                     <td>{job?.positionTitle}</td>
+                    <td><DescirptionPopUp buttonLabel="View Description" className="" job={job}/></td>
                     <td>{job.church?.email}</td>
                     <td>{job.jobApplications.length}</td>
                     <td>{dateConverter(job.datePosted)}</td>
                     {currentChurch  ? <td>{parseInt(currentChurch) === job.churchId ? 
-                    <><Button color="warning"onClick={()=>{
+                    <><Button className="job-button"color="warning"onClick={()=>{
                         history.push(`/jobpostings/edit/${job.id}`)
                     }}>Edit</Button>
-                    <Button color="danger"onClick={()=>{
+                    <Button className="job-button"color="danger"onClick={()=>{
                         DeleteJob(job.id).then(()=>FetchJobs())
                     }}>Delete</Button></>
                     :

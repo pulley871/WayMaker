@@ -9,6 +9,15 @@
     border-radius: 100%;
     border: 5px solid rgb(74, 74, 226);
     box-shadow: 5px 15px 20px rgba(37, 68, 119, 0.4);
+    
+    animation: rotate 1.0s ease-in-out;
+}
+
+@keyframes rotate {
+    
+    0%{
+        transform: rotateY(360deg);
+    }
 }
 #churchprofile-header{
     display: flex;
@@ -31,4 +40,7 @@
 }
 #church-profile-job-container h3{
     margin-bottom: 2rem;
+}
+#church-contact-edit{
+    display: flex;
 }

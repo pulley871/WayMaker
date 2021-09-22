@@ -34,15 +34,14 @@ export const Search =() => {
                     })
             
                 )
-            .then( ()=> setTimeout(()=>{setSearchResults(arr)}, 100))       
+            .then( ()=> setTimeout(()=>{setSearchResults(arr)}, 0))       
         }else if (searchTerm === ""){
             setSearchResults([])
         }
     }
     useEffect(()=>{
-        setTimeout(()=>{search()}, 200)
-        console.log(searchResults)
-        console.log(searchTerm)
+        setTimeout(()=>{search()}, 5)
+        
     },[searchTerm])
     return(
             <div id="searchUsers" className="instant-search">

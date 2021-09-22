@@ -18,7 +18,7 @@ export const JobApplicationForm = () =>{
     },[])
     useEffect(() => {
         FetchCurrentUser(parseInt(localStorage.getItem("waymaker_user"))).then((data)=> setUser(data))
-        console.log(user)
+        
     }, [job])
     return (<><h1>Apply Now!</h1>
                 <h5>Church Name: {job.church?.name}</h5>

@@ -1,5 +1,6 @@
 import { useContext, useState, useEffect } from "react"
 import { useParams } from "react-router"
+import { Link } from "react-router-dom"
 import { Input, Table, Button } from "reactstrap"
 import { JobBoardContext } from "../jobBoard/JobBoardProvider"
 import { JobList } from "./ChurchJob"
@@ -23,7 +24,7 @@ export const ChurchProfile = () =>{
         let url= `https://www.google.com/maps/place/`
         
         let arr = address?.split(" ")
-        console.log(arr)
+        
             if(arr !== undefined){
 
                 for (const word of arr){
@@ -48,13 +49,16 @@ export const ChurchProfile = () =>{
             
 
             <section id={`churchprofile-header`}>
-            {/* PROFILE PICTURE AREA */}
-            <ProfilePic userId={churchId} check={checkUser}/>
-            <h2>{church.name}</h2>
+           
+                <ProfilePic userId={churchId} check={checkUser}/>
+                <h2>{church.name}</h2>
             </section>
             <section id="church-contact-container">
                 <div id="church-contact-info">
-                    <h3>Contact Information</h3>
+                    <div id="church-contact-edit">
+                        <h3>Contact Information</h3>
+                        {checkUser() ? <Link to={`/editchurchprofile/${church.id}`}><span class="material-icons">edit</span></Link>:""}
+                    </div>
                     <span class="material-icons">email</span>
                     <a id="church-contact-info_email"href={`mailto:${church.email}`}>{church.email}</a><br/>
                     <span class="material-icons">phone</span>

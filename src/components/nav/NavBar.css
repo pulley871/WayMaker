@@ -1,5 +1,5 @@
 .navlink {
-    color: silver;
+    color: rgb(146, 28, 28);
 }
 
 #navpic{
@@ -8,7 +8,9 @@
     border-radius: 100%;
     border: 2px solid rgb(9, 126, 244);
     box-shadow: 5px 15px 20px rgba(37, 68, 119, 0.4);
+    margin-right: .5rem;
 }
 .navlogo {
     margin-left: 2rem;
+    
 }

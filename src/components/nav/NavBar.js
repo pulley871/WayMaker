@@ -28,8 +28,8 @@ export const NavBar = () =>{
                             <NavLink href={`/profile/${localStorage.getItem("waymaker_user")}`}>Your Profile</NavLink>
                 }
                 </NavItem>
-                <NavItem>
-                    <NavLink className="navlink "href="/jobpostings">Job Postings</NavLink>
+                <NavItem >
+                    <NavLink href="/jobpostings">Job Postings</NavLink>
                 </NavItem>
                 <NavItem>
                     <NavLink href="/login" onClick={()=>{
@@ -47,28 +47,6 @@ export const NavBar = () =>{
             
         </Navbar>
         
-        // <ul className="navbar navbar-light bg-light navbar-expand-lg">
-        //     <li className="navbar__item  btn btn-outline-success me-2">
-        //         <Link className="navbar_link" to="/jobpostings" >Job Postings</Link>
-        //     </li>
-        //     <li className="navbar__item  btn btn-outline-success me-2">
-        //         {currentChurch ? 
-        //         <Link className="navbar_link" to="/churchprofile">Your Church</Link>
-        //         :
-        //         <Link className="navbar_link" to="/profile">Your Profile</Link>
-                
-        //         }
-        //     </li>
-            
-        //     <li className="navbar__item  btn btn-outline-success me-2">
-        //         <Link className="navbar_link" to="/search" >Search Users</Link>
-        //     </li>
-        //     <li className="navbar__item  btn btn-outline-success me-2">
-        //         <Link className="navbar_link" to="/login" onClick={()=>{
-        //             localStorage.removeItem("waymaker_church")
-        //             localStorage.removeItem("waymaker_user")
-        //             }}>Logout</Link>
-        //     </li>
-        // </ul>
+     
     )
 }

@@ -33,11 +33,12 @@ export const JobForm = () =>{
                 
             </FormGroup>
             
-            <Button color="primary" onClick={() => {
+            <Button color="success" onClick={() => {
                 const jobObject = {
                     churchId: parseInt(currentChurch),
                     positionTitle: position,
-                    description: description
+                    description: description,
+                    datePosted: Math.floor(Date.now() / 1000)
                 }
                 PostJob(jobObject).then(()=> history.push("/jobpostings"))
             }}>Post Job</Button>

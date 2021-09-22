@@ -1,1 +1,30 @@
 @import url("https://fonts.googleapis.com/icon?family=Material+Icons");
+
+.description-button{
+    text-decoration: none;
+}
+#jobboard-h1{
+    margin-top: 5rem;
+    margin-bottom: 2rem;
+}
+#joboard-search-button{
+    margin-bottom: 1rem;
+    margin-left: 2rem;
+    
+}
+#joboard-search-button button{
+    margin-left: 1rem;
+}
+.job-button{
+    margin-right: .5rem;
+}
+.white-space{
+    white-space: pre-line;
+}
+#job-board-container h1 {
+    margin-left: 2rem;
+}
+#job-board-table{
+    margin-left: 2rem;
+    
+}

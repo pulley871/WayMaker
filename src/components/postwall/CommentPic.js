@@ -7,7 +7,7 @@ export const CommentPic = ({id, bool})=>{
     const {FetchPictures}  = useContext(UserContext)
 
     useEffect(()=>{
-        console.log(id, bool)
+        
         FetchPictures(id, bool).then((data)=> setProfilePic(data[0]))
     },[id, bool])
     return(<>{console.log(profilePic)}
