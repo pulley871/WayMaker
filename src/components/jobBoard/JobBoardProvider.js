@@ -63,6 +63,11 @@ export const JobBoardProvider = (props) =>{
                 setChurch(data)
             })
     }
+    const FetchChurches = () => {
+        return fetch(`https://waymaker-api-bdy6w.ondigitalocean.app/churches/`)
+            .then(res => res.json())
+            
+    }
     const PostJob = (object) =>{
         const fetchOption = {
             method: "POST",
@@ -144,7 +149,7 @@ export const JobBoardProvider = (props) =>{
         
      }
     return (<JobBoardContext.Provider value={{
-        applications,jobs,church,jobApplications,searchTerm,setJobs, setSearchTerm, FetchJobs,FetchJob, FetchApplications, FetchJobsByChurch, FetchChurch,FetchJobApplications, PostJob, PostApplication, DeleteJob, RemoveJobApplications, EditJobPosting,FetchSearchedJobs, JsXString, EditProfile
+        applications,jobs,church,jobApplications,searchTerm,setJobs, setSearchTerm, FetchJobs,FetchJob, FetchApplications, FetchJobsByChurch, FetchChurch,FetchJobApplications, PostJob, PostApplication, DeleteJob, RemoveJobApplications, EditJobPosting,FetchSearchedJobs, JsXString, EditProfile, FetchChurches
     }}>
         {props.children}
     </JobBoardContext.Provider>)

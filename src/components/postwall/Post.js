@@ -8,13 +8,17 @@ import { Link } from 'react-router-dom';
 import { CommentProvider } from './CommentProvider';
 export const Post = ({post}) => {
     const [comments, setComments] = useState([])
-    const {FetchChurch, church, } = useContext(JobBoardContext)
+    const {FetchChurches } = useContext(JobBoardContext)
+    const [church,  setChurch] = useState({})
     const {FetchComments, DeletePost, FetchPosts} = useContext(PostWallContext)
     const update = () =>{
         FetchComments(post.id).then((data) => setComments(data.reverse()))
     }
     useEffect(()=>{
-        FetchChurch(post.churchId)
+        FetchChurches().then((data) =>{
+            const found = data.find((church) => church.id === post.churchId)
+            setChurch(found)
+        })
         update()
         
     },[post])
@@ -31,7 +35,7 @@ export const Post = ({post}) => {
             allowfullscreen/>
             
                 <article className="post-container_info">
-                <CardTitle tag="h5">{church.name}</CardTitle>
+                <CardTitle tag="h5">{church?.name}</CardTitle>
                 <CardText>{post.description}</CardText>
                 </article>
             </div>
