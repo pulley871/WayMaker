@@ -61,7 +61,7 @@ export const UserProvider = (props) =>{
         return fetch("https://api.cloudinary.com/v1_1/dcaryjezn/image/upload", fetchOption)
         .then(res => res.json())
         .then((data)=>{
-            console.log(data)
+            
             if (boolean){
                 const picObj = {
                     churchId: id,

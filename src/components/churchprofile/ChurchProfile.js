@@ -28,7 +28,7 @@ export const ChurchProfile = () =>{
             if(arr !== undefined){
 
                 for (const word of arr){
-                    console.log(word)
+                    
                     url += `${word}+`
                 }
                 url += zip
@@ -59,11 +59,11 @@ export const ChurchProfile = () =>{
                         <h3>Contact Information</h3>
                         {checkUser() ? <Link to={`/editchurchprofile/${church.id}`}><span class="material-icons">edit</span></Link>:""}
                     </div>
-                    <span class="material-icons">email</span>
+                    <span className="material-icons">email</span>
                     <a id="church-contact-info_email"href={`mailto:${church.email}`}>{church.email}</a><br/>
-                    <span class="material-icons">phone</span>
+                    <span className="material-icons">phone</span>
                     <a id="church-contact-info_email"href={`tel:${church.phoneNumber}`}>{church.phoneNumber}</a><br/>
-                    <span class="material-icons">home</span>
+                    <span className="material-icons">home</span>
                     <a id="church-contact-info_email"href={addressUrl}>{church.address}  || {church.zipCode}</a>
 
                 </div>

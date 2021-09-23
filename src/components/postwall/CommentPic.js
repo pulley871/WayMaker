@@ -10,7 +10,7 @@ export const CommentPic = ({id, bool})=>{
         
         FetchPictures(id, bool).then((data)=> setProfilePic(data[0]))
     },[id, bool])
-    return(<>{console.log(profilePic)}
+    return(<>
             <div id={`comment-pic_${id}`} className="comment-pic">
                 {profilePic !== undefined?<img src={profilePic?.pictureURL} alt={profilePic.churchId}/> : ""}
             </div>

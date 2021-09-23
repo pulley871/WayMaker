@@ -28,7 +28,7 @@ export const Profile = () => {
             if(arr !== undefined){
 
                 for (const word of arr){
-                    console.log(word)
+                    
                     url += `${word}+`
                 }
                 url += zip
@@ -67,11 +67,11 @@ export const Profile = () => {
                     <h3>Contact Information</h3>
                     {checkUser() ? <Link to={`/edituserprofile/${user.id}`}><span class="material-icons">edit</span></Link>:""}
                     </div>
-                    <span class="material-icons">email</span>
+                    <span className="material-icons">email</span>
                     <a id="user-contact-info_email"href={`mailto:${user.email}`}>{user.email}</a><br/>
-                    <span class="material-icons">music_note</span>
+                    <span className="material-icons">music_note</span>
                     <a id="user-contact-info_email"href={`#`}>{user.instrument}</a><br/>
-                    <span class="material-icons">home</span>
+                    <span className="material-icons">home</span>
                     <a id="user-contact-info_email"href={`${userUrl}`}>{user.address}  || {user.zipCode}</a>
 
                 </div>

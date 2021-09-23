@@ -34,6 +34,6 @@ export const EditJobPosting = () => {
                 <Button color="success"onClick={()=>{
                     EditJobPosting(job.id, description, title).then(()=> history.push("/jobpostings"))
                 }}>Apply Changes</Button>
-            {console.log(job)}
+            
     </>)
 }

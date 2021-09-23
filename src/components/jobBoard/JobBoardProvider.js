@@ -17,7 +17,7 @@ export const JobBoardProvider = (props) =>{
         
     }
     const FetchSearchedJobs = (term) => {
-        return fetch(`https://waymaker-api-bdy6w.ondigitalocean.app/jobPostings?_expand=church&positionTitle_like=${term}&description_like=${term}&_embed=jobApplications`)
+        return fetch(`https://waymaker-api-bdy6w.ondigitalocean.app/jobPostings?_expand=church&positionTitle_like=${term}&_embed=jobApplications`)
             .then(res => res.json())
             .then((data) => {
                 setJobs(data)
