@@ -14,7 +14,7 @@ export const RegisterChurch = () =>{
     const history = useHistory()
     const checkEmail = () =>{
         const foundEmail = churches.find((user) => user.email.toLowerCase() === email.toLowerCase())
-        return setEmailIsValid(foundEmail ? false : true)
+        return setEmailIsValid(foundEmail || email === ""? false : true)
     }
     useEffect(()=>{
         FetchChurches()

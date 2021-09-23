@@ -33,7 +33,10 @@ const ModalExample = (props) => {
             localStorage.setItem("waymaker_church", foundChurch.id)
             toggle()
             history.push("/")
-      }else{
+      }else if (userEmail === ""){
+        setError(true)
+      }
+      else{
             setError(true)
       }
   }

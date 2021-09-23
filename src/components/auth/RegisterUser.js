@@ -14,7 +14,7 @@ export const RegisterUser = () =>{
     const history = useHistory()
     const checkEmail = () =>{
         const foundEmail = users.find((user) => user.email.toLowerCase() === email.toLowerCase())
-        return setEmailIsValid(foundEmail ? false : true)
+        return setEmailIsValid(foundEmail  || email === ""? false : true)
     }
     useEffect(()=>{
         FetchUsers()
