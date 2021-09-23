@@ -36,7 +36,7 @@ export const Post = ({post}) => {
             
                 <article className="post-container_info">
                 <CardTitle tag="h5">{church?.name}</CardTitle>
-                <CardText>{post.description}</CardText>
+                <CardText>{post.title}<br/>{post.description}</CardText>
                 </article>
             </div>
             

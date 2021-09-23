@@ -22,6 +22,9 @@ export const EditPost = () => {
     }, [])
     useEffect(() => {
         FetchChurch(churchId)
+        setDescription(post.description)
+        setTitle(post.title)
+        setURL(post.videoUrl)
     }, [post])
     return(<>
             <Form>

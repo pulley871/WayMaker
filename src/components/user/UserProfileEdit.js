@@ -7,7 +7,7 @@ import { UserContext } from "./UserProvider"
 export const UserProfileEdit = () =>{
     const {userId} = useParams()
     const [user, setUser] = useState({})
-    const [email, setEmail] = useState("")
+    
     const [instrument, setInstrument] = useState("")
     const [address, setAddress] = useState("")
     const [description, setDescription] = useState("")
@@ -21,7 +21,7 @@ export const UserProfileEdit = () =>{
         FetchUser(userId).then((data)=> setUser(data))
     }, [userId])
     useEffect(() =>{
-        setEmail(user.email)
+        
         setInstrument(user.instrument)
         setZip(user.zipCode)
         setAddress(user.address)
@@ -31,10 +31,7 @@ export const UserProfileEdit = () =>{
            <h3>Edit Your Contact Info</h3>
            <Form>
                <FormGroup>
-                   <Label for="churchemail">Email</Label>
-                    <Input type="text" name="churchemail"defaultValue={user.email} onChange={(event)=>{
-                        setEmail(event.target.value)
-                    }}></Input>
+                   
                     <Label for="userinstrument">Instrument</Label>
                     <Input type="text" name="userinstrument"defaultValue={user.instrument} onChange={(event)=>{
                         setInstrument(event.target.value)
@@ -47,7 +44,7 @@ export const UserProfileEdit = () =>{
                     <Input type="text" name="userzip"defaultValue={user.zipCode} onChange={(event)=>{
                         setZip(event.target.value)
                     }}></Input>
-                    <Label for="userdes">Zip Code</Label>
+                    <Label for="userdes">About You</Label>
                     <Input type="textarea" name="userdes"defaultValue={user.description} onChange={(event)=>{
                         setDescription(event.target.value)
                     }}></Input>
@@ -55,7 +52,7 @@ export const UserProfileEdit = () =>{
            </Form>
            <Button color="success"onClick={()=>{
                const object = {
-                  email: email,
+                  
                   instrument: instrument,
                   address: address,
                   zipCode: parseInt(zip),

@@ -5,7 +5,7 @@ import { JobBoardContext } from "../jobBoard/JobBoardProvider"
 
 export const ChurchProfileEdit = () =>{
     const {churchId} = useParams()
-    const [email, setEmail] = useState("")
+    
     const [phone, setPhone] = useState("")
     const [address, setAddress] = useState("")
     const [zip, setZip] = useState(0)
@@ -15,7 +15,7 @@ export const ChurchProfileEdit = () =>{
     useEffect(() => {
         
         FetchChurch(churchId).then(() =>{
-            setEmail(church.email)
+            
             setPhone(church.phoneNumber)
             setZip(church.zipCode)
             setAddress(church.address)
@@ -25,11 +25,8 @@ export const ChurchProfileEdit = () =>{
            <h3>Edit Your Contact Info</h3>
            <Form>
                <FormGroup>
-                   <Label for="churchemail">Email</Label>
-                    <Input type="text" name="churchemail"defaultValue={church.email} onChange={(event)=>{
-                        setEmail(event.target.value)
-                    }}>
-                    </Input>
+                   
+                    
                     <Label for="churchnumber">Phone Number</Label>
                     <Input type="text" name="churchnumber"defaultValue={church.phoneNumber} onChange={(event)=>{
                         setPhone(event.target.value)
@@ -49,7 +46,7 @@ export const ChurchProfileEdit = () =>{
            </Form>
            <Button color="success"onClick={()=>{
                const object = {
-                  email: email,
+                  
                   phoneNumber: parseInt(phone),
                   address: address,
                   zipCode: parseInt(zip) 
