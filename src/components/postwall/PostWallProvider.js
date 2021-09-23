@@ -69,7 +69,7 @@ export const PostWallProvider = (props) => {
             body: JSON.stringify({
                 description: object.description,
                 title: object.title,
-                videoUrl: object.url
+                videoUrl: object.videoUrl
             })
 
         }
