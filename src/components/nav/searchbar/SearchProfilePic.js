@@ -4,11 +4,17 @@ import { UserContext } from "../../user/UserProvider"
 import "./Search.css"
 export const SearchPic = ({id, bool})=>{
     const [profilePic, setProfilePic] = useState({})
-    const {FetchPictures}  = useContext(UserContext)
+    const {churchPics, userPics }  = useContext(UserContext)
 
     useEffect(()=>{
+        if(bool === true){
+            const foundPic = churchPics.find((pic) => pic.churchId === id)
+            return setProfilePic(foundPic)
+        }else{
+            const foundPic = userPics.find((pic) => pic.userId === id)
+            return setProfilePic(foundPic)
+        }
         
-        FetchPictures(id, bool).then((data)=> setProfilePic(data[0]))
     },[id, bool])
     return(<>
             <div id={`search-pic_${id}`} className="search-pic">

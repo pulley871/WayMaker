@@ -21,7 +21,7 @@ export const Comment = ({comment, postId, update}) => {
     
     useEffect(() =>{
         FetchUser(comment.userId).then((data) => setUser(data))
-    },[])
+    },[comment])
   return (
       
     <div className="comment-container">
@@ -29,7 +29,7 @@ export const Comment = ({comment, postId, update}) => {
       <Card body  >
           <article>
           <div>
-          <CommentPic id={user.id} bool={false} />
+          <CommentPic id={user.id} bool={false} comment={comment}/>
           </div>
           <div>
         <CardTitle tag="h5">{user.name}</CardTitle>

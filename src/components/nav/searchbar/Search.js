@@ -1,14 +1,16 @@
-import { useState, useEffect } from "react"
+import { useState, useEffect, useContext } from "react"
 import "./Search.css" 
 import { CloudinaryContext, Image, Transformation } from 'cloudinary-react';
 import { SearchPic } from "./SearchProfilePic";
+import { UserContext } from "../../user/UserProvider";
 
 export const Search =() => {
     const[searchTerm, setSearchTerm] = useState("")
     const searchUsers = document.querySelector("#searchUsers")
     const [searchResults, setSearchResults] = useState([])
+    const {FetchPictures, }  = useContext(UserContext)
     // setTimeout(()=>{ functionToDelay()}, millaseconds(500))
-
+    
 
 
 
@@ -34,13 +36,17 @@ export const Search =() => {
                     })
             
                 )
-            .then( ()=> setTimeout(()=>{setSearchResults(arr)}, 0))       
+            .then( ()=> setSearchResults(arr))       
         }else if (searchTerm === ""){
             setSearchResults([])
         }
     }
+    useEffect(() =>{
+        FetchPictures(0, true)
+        FetchPictures(0, false)
+    },[])
     useEffect(()=>{
-        setTimeout(()=>{search()}, 5)
+        search()
         
     },[searchTerm])
     return(

@@ -5,11 +5,16 @@ import "./UserProfile.css"
 export const ProfilePic = ({userId, check}) => {
     const [imageSelected, setImageSelected] = useState("")
     const [profilePic, setProfilePic] = useState({})
-    const {FetchPictures, UploadPicture } = useContext(UserContext)
+    const {FetchPictures, UploadPicture, userPics } = useContext(UserContext)
 
     useEffect(()=>{
-        FetchPictures(userId, false).then((data)=> setProfilePic(data[0]))
+        FetchPictures(0, false)
+        
     },[userId])
+    useEffect(() => {
+        const foundPic = userPics.find((pic) => pic.userId === userId)
+        setProfilePic(foundPic)
+    },[userPics])
     return(<>
             <div id="profile-pic">
                 {profilePic !== undefined?<img src={profilePic?.pictureURL} alt={profilePic.userId}/> : ""}
