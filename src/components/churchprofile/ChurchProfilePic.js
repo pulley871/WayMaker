@@ -5,11 +5,13 @@ import "./ChurchProfile.css"
 export const ProfilePic = ({userId, check}) => {
     const [imageSelected, setImageSelected] = useState("")
     const [profilePic, setProfilePic] = useState({})
-    const {FetchPictures, UploadPicture } = useContext(UserContext)
+    const {churchPics, UploadPicture } = useContext(UserContext)
 
     useEffect(()=>{
-        FetchPictures(userId, true).then((data)=> setProfilePic(data[0]))
-    },[userId])
+        
+        const foundPic = churchPics.find((pic) => pic.churchId === parseInt(userId))
+        setProfilePic(foundPic)
+    },[churchPics])
     return(<>
             <div id="churchProfile-pic">
                 {profilePic !== undefined?<img src={profilePic?.pictureURL} alt={profilePic.churchId}/> : ""}

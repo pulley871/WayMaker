@@ -1,9 +1,11 @@
-import { createContext } from "react";
+import { createContext, useState } from "react";
 
 
 export const UserContext = createContext()
 
 export const UserProvider = (props) =>{
+    const [userPics, setUserPics] = useState([])
+    const [churchPics, setChurchPics] = useState([])
     const FetchUser = (id)=>{
         return fetch(`https://waymaker-api-bdy6w.ondigitalocean.app/users/${id}`)
             .then(res => res.json())
@@ -27,11 +29,11 @@ export const UserProvider = (props) =>{
     }
     const FetchPictures = (userId, boolean) =>{
         if (boolean){
-            return fetch(`https://waymaker-api-bdy6w.ondigitalocean.app/churchPictures?churchId=${userId}`)
-            .then(res => res.json())
+            return fetch(`https://waymaker-api-bdy6w.ondigitalocean.app/churchPictures`)
+            .then(res => res.json()).then((data) => setChurchPics(data))
         }
-        return fetch(`https://waymaker-api-bdy6w.ondigitalocean.app/userPictures?userId=${userId}`)
-            .then(res => res.json())
+        return fetch(`https://waymaker-api-bdy6w.ondigitalocean.app/userPictures`)
+            .then(res => res.json()).then((data) => setUserPics(data))
             
     }
     const PostUserPictureToJson = (object, isChurch)=>{
@@ -102,7 +104,7 @@ export const UserProvider = (props) =>{
         return fetch(`https://waymaker-api-bdy6w.ondigitalocean.app/jobApplications/${id}`, dataToSend)
      }
     return (<UserContext.Provider value={{
-        FetchPictures,UploadPicture, FetchUser,FetchUserApplications, FetchApplicationDetails, DeleteApplication,FetchSpecificApplication, EditApplication
+        churchPics,userPics,FetchPictures,UploadPicture, FetchUser,FetchUserApplications, FetchApplicationDetails, DeleteApplication,FetchSpecificApplication, EditApplication
            }}>
         {props.children}</UserContext.Provider>)
 }

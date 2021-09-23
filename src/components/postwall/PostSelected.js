@@ -5,6 +5,7 @@ import { PostWallContext } from './PostWallProvider';
 import React, {useEffect, useState, useContext} from 'react';
 import { Card, CardBody, Button, CardTitle, CardText, CardImg, Media, Form, FormGroup, Label, Input } from 'reactstrap';
 import "./PostWall.css"
+import { UserContext } from "../user/UserProvider";
 export const SelectedPost = () =>{
     const {postId} = useParams()
     
@@ -12,6 +13,7 @@ export const SelectedPost = () =>{
     const [comment, setComment] = useState("")
     const {FetchChurch, church, } = useContext(JobBoardContext)
     const {FetchComments, FetchPost, PostComments} = useContext(PostWallContext)
+    const {FetchPictures}  = useContext(UserContext)
     const [comments, setComments] = useState([])
     const checkUser = ()=>{
         if (localStorage.getItem("waymaker_user") && localStorage.getItem("waymaker_church") === null){
@@ -21,14 +23,22 @@ export const SelectedPost = () =>{
         }
     }
     const update = () =>{
+        FetchPictures(0,false)
+        
         FetchComments(postId).then((data) => setComments(data.reverse()))
+
+        
     }
     useEffect(() =>{
         FetchPost(postId).then((data) =>setPost(data))
         update()
     },[postId])
     useEffect(()=>{
-        FetchChurch(post.churchId)
+        
+        if (post.churchId !== undefined){
+            FetchChurch(post.churchId)
+
+        }
     },[post])
     useEffect(() =>{
         setComment("")

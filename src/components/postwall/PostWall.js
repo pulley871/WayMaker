@@ -1,6 +1,7 @@
 import { useContext, useState, useEffect } from "react"
 import { Link, useHistory } from "react-router-dom"
 import { Button, CardGroup } from "reactstrap"
+import { UserContext } from "../user/UserProvider"
 import { Post } from "./Post"
 import { PostWallContext } from "./PostWallProvider"
 
@@ -8,12 +9,12 @@ import { PostWallContext } from "./PostWallProvider"
 
 export const PostWall = () =>{
     const {FetchPosts,  posts} = useContext(PostWallContext)
-    
+    const {FetchPictures} = useContext(UserContext)
     
     const history = useHistory()
     useEffect(() => {
         FetchPosts()
-        
+        FetchPictures(0, false)
     }, [])
    
     return(<>

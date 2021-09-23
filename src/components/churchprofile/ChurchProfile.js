@@ -3,12 +3,14 @@ import { useParams } from "react-router"
 import { Link } from "react-router-dom"
 import { Input, Table, Button } from "reactstrap"
 import { JobBoardContext } from "../jobBoard/JobBoardProvider"
+import { UserContext } from "../user/UserProvider"
 import { JobList } from "./ChurchJob"
 import "./ChurchProfile.css"
 import { ProfilePic } from "./ChurchProfilePic"
 
 export const ChurchProfile = () =>{
     const {FetchJobsByChurch, jobs,FetchChurch, church} = useContext(JobBoardContext)
+    const {FetchPictures} = useContext(UserContext)
     const [addressUrl, setUrl] =useState("")
     const {churchId} = useParams()
     
@@ -41,6 +43,7 @@ export const ChurchProfile = () =>{
         
         FetchJobsByChurch(parseInt(churchId))
         FetchChurch(churchId)
+        FetchPictures(0, true)
     },[])
     useEffect(() => {
          setUrl(googlifyAddress(church?.address, church.zipCode))
