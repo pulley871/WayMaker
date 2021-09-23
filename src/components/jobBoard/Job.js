@@ -8,26 +8,26 @@ import "./JobBoard.css"
 export const JobLayout = ({job}) =>{
     const currentChurch = localStorage.getItem("waymaker_church")
     const currentUser = localStorage.getItem("waymaker_user")
-    const {FetchJobApplications, DeleteJob, FetchJobs } = useContext(JobBoardContext)
+    const {FetchApplications, DeleteJob, FetchJobs, applications } = useContext(JobBoardContext)
     const [jobApplications, setJobApplications] = useState([])
-    const [isApplied, setApplied] = useState(false)
+    const [isApplied, setApplied] = useState(Boolean)
     const history = useHistory()
     useEffect(() => {
         
-        FetchJobApplications(job.id).then((data)=> setJobApplications(data))
+        FetchApplications()
         
-    }, [])
+    }, [job])
     useEffect(() => {
         isAppliedCheck()
-    }, [jobApplications])
+    }, [applications])
     const dateConverter = (timeStamp ) =>{
         let date = new Date(timeStamp*1000)
         return`${date.getDate()}/${date.getMonth()+1}/${date.getFullYear()}`
     }
     const isAppliedCheck = () => {
-        if (jobApplications.length > 0){
+        if (applications?.length > 0){
             
-            const foundApplication = jobApplications.find((app)=>app.userId === parseInt(currentUser))
+            const foundApplication = applications.find((app)=>app.userId === parseInt(currentUser) && app.jobPostingId === job.id)
             return (foundApplication !== undefined ? setApplied(true) : setApplied(false))
 
         }
@@ -42,7 +42,7 @@ export const JobLayout = ({job}) =>{
                     <td>{job?.positionTitle}</td>
                     <td><DescirptionPopUp buttonLabel="View Description" className="" job={job}/></td>
                     <td>{job.church?.email}</td>
-                    <td>{job.jobApplications.length}</td>
+                    <td>{job.jobApplications?.length}</td>
                     <td>{dateConverter(job.datePosted)}</td>
                     {currentChurch  ? <td>{parseInt(currentChurch) === job.churchId ? 
                     <><Button className="job-button"color="warning"onClick={()=>{

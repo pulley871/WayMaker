@@ -42,7 +42,7 @@ export const JobBoardProvider = (props) =>{
             
     }
     const FetchApplications = () => {
-        return fetch("https://waymaker-api-bdy6w.ondigitalocean.app/applications")
+        return fetch("https://waymaker-api-bdy6w.ondigitalocean.app/jobApplications")
             .then(res => res.json())
             .then((data) => {
                 setApplications(data)

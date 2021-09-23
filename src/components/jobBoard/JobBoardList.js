@@ -21,12 +21,14 @@ export const JobList= ({alljobs, setJobs}) =>{
                     switch(upDownArrow){
                         case "down": {
                             setArrow("up")
-                            setJobs(alljobs.sort((a,b) => {return a.datePosted - b.datePosted}))
+                            const copy = [...alljobs]
+                            setJobs(copy.sort((a,b) => {return a.datePosted - b.datePosted}))
                         }
                         break;
                         case "up": {
                             setArrow("down")
-                            setJobs(alljobs.sort((a,b) => {return b.datePosted - a.datePosted}))
+                            const copy = [...alljobs] 
+                            setJobs(copy.sort((a,b) => {return b.datePosted - a.datePosted}))
                         }
                         break;
                     }
