@@ -16,13 +16,13 @@ const ModalExample = (props) => {
   useEffect(() => {
       FetchUsers()
       .then(FetchChurches())
-      console.log(users, churches)
+      
   },[])
   useEffect(()=>{
     setError(false)
   },[userEmail])
   const checkUsers = () =>{
-      debugger
+      
       const foundUser = users.find((user)=> user.email.toLowerCase() === userEmail.toLowerCase())
       const foundChurch = churches.find((church) => church.email.toLowerCase() === userEmail.toLowerCase())
       if (foundUser) {
@@ -33,7 +33,10 @@ const ModalExample = (props) => {
             localStorage.setItem("waymaker_church", foundChurch.id)
             toggle()
             history.push("/")
-      }else{
+      }else if (userEmail === ""){
+        setError(true)
+      }
+      else{
             setError(true)
       }
   }
@@ -44,15 +47,14 @@ const ModalExample = (props) => {
         <ModalHeader toggle={toggle}>Please Login</ModalHeader>
         <ModalBody>
         <FormGroup row>
-        <Label for="exampleEmail" sm={2}>Email</Label>
-        <Col sm={10}>
-          <Input type="email" name="email" id="exampleEmail" placeholder="Enter Your Email" onKeyUp={(event)=>{
-              setUserEmail(event.target.value)
-          }}/>
-        </Col>
-        {error ? <Alert color="danger">
-        Invalid Email
-      </Alert> : ""}
+          <Label for="exampleEmail" sm={2}>Email</Label>
+          <Col sm={10}>
+            <Input type="email" name="email" id="exampleEmail" placeholder="Enter Your Email" onKeyUp={(event)=>{
+                setUserEmail(event.target.value)
+            }}/>
+          </Col>
+          {error ? 
+          <Alert color="danger">Invalid Email</Alert> : ""}
       </FormGroup>
         </ModalBody>
         <ModalFooter>

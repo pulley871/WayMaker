@@ -14,7 +14,7 @@ export const RegisterUser = () =>{
     const history = useHistory()
     const checkEmail = () =>{
         const foundEmail = users.find((user) => user.email.toLowerCase() === email.toLowerCase())
-        return setEmailIsValid(foundEmail ? false : true)
+        return setEmailIsValid(foundEmail  || email === ""? false : true)
     }
     useEffect(()=>{
         FetchUsers()
@@ -24,7 +24,7 @@ export const RegisterUser = () =>{
     },[email])
 
     return (<>
-        <h1>WayMaker User Regristration</h1>
+        <h1>WayMaker User Registration</h1>
         <Form>
             <FormGroup>
                 <Label for="useremail">Your Email </Label>

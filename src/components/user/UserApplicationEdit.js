@@ -21,6 +21,6 @@ export const EditApplication = () =>{
                         <Input type="textarea" name="description" defaultValue={application.description}onKeyUp={(event)=> setDescription(event.target.value)}></Input>
                     </FormGroup>
                 </Form>
-                <Button onClick={() => EditApplication(applicationId, description).then(()=>history.push(`/profile/${localStorage.getItem("waymaker_user")}`))}>Apply Edits</Button>
+                <Button color="success"onClick={() => EditApplication(applicationId, description).then(()=>history.push(`/profile/${localStorage.getItem("waymaker_user")}`))}>Apply Edits</Button>
     </>)
 }

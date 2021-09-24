@@ -14,8 +14,12 @@ export const EditJobPosting = () => {
     useEffect(() =>{
         FetchJob(jobId).then((data) => setJob(data))
     },[])
+    useEffect(() => {
+        setDescription(job.description)
+        setTitle(job.positionTitle)
+    },[job])
     return(<><h1>Edit Job</h1>
-            <Form>
+                <Form>
                     
                     <FormGroup>
                         <Label for="userInstrument">Edit Position Title</Label>
@@ -27,9 +31,9 @@ export const EditJobPosting = () => {
                         <Input type="textarea" name="description" defaultValue={job.description}onKeyUp={(event)=> setDescription(event.target.value)}></Input>
                     </FormGroup>
                 </Form>
-                <Button onClick={()=>{
+                <Button color="success"onClick={()=>{
                     EditJobPosting(job.id, description, title).then(()=> history.push("/jobpostings"))
                 }}>Apply Changes</Button>
-            {console.log(job)}
+            
     </>)
 }

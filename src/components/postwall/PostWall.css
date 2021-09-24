@@ -1,0 +1,60 @@
+@import url("https://fonts.googleapis.com/icon?family=Material+Icons");
+#home-h1{
+    
+    
+    text-align: center;
+    width: 100vw;
+    margin-top: 4rem;
+    
+    
+}
+#home-h3{
+    font-weight: bolder;
+    margin-top: 10rem;
+    margin-bottom: 1rem;
+}
+#home-postbutton{
+    margin-bottom: 1rem;
+    width: 25vw;
+}
+#toggler {
+    text-decoration: none;
+    
+}
+.card {
+    align-items: flex-start;
+    z-index: 0;
+}
+#comment-button{
+    margin-top: .5rem;
+    
+}
+#comment-list-container{
+    margin-top: 1rem;
+}
+.post-container{
+    display: flex;
+    width: 100vw;
+}
+.post-link{
+    text-decoration: none;
+    color: black;
+    margin-top: 1rem;
+}
+#postcardbuttons{
+    display: flex;
+    align-self: flex-end;
+}
+.comment-pic img{
+    height: 3rem;
+    border-radius: 60%;
+    width: 4rem;
+}
+.comment-container article{
+    display: flex !important;
+    flex-direction: row !important;
+    
+}
+.post-container_info{
+    margin-left: 1rem;
+}

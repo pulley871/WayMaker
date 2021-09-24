@@ -72,14 +72,18 @@
     border-radius: 5px;
     overflow-y: auto;
     width: 13.5rem;
+    z-index: 1;
 }
 .instant-search__result{
-    display: block;
+    display: flex;
+    position: relative;
+    justify-content: flex-start;
     color: #333333;
     text-decoration: none;
     padding: 10px;
     font-size: 0.8em;
     cursor: pointer;
+    z-index: 1;
 }
 .instant-search__result:hover {
     background: #eeeeee;
@@ -94,4 +98,17 @@
 .instant-search__paragraph{
     line-height: 1.5;
     margin: 8px 0;
+}
+
+#churchProfilePic{
+    height: 5rem
+
+}
+#churchProfilePic img{
+    border-radius: 60%;
+}
+.search-pic img{
+    height: 3rem;
+    border-radius: 60%;
+    width: 4rem;
 }

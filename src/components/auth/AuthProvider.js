@@ -8,14 +8,14 @@ export const AuthProvider = (props) =>{
     const [churches, setChurches] = useState([])
 
     const FetchUsers = () =>{
-        return fetch("http://localhost:8088/users")
+        return fetch("https://waymaker-api-bdy6w.ondigitalocean.app/users")
             .then(res => res.json())
             .then((data) => {
                 setUsers(data)
             })
     }
     const FetchChurches = () =>{
-        return fetch("http://localhost:8088/churches")
+        return fetch("https://waymaker-api-bdy6w.ondigitalocean.app/churches")
             .then(res => res.json())
             .then((data) => {
                 setChurches(data)
@@ -30,7 +30,7 @@ export const AuthProvider = (props) =>{
             body: JSON.stringify(object)
         }
         
-        return fetch("http://localhost:8088/users", fetchOption)
+        return fetch("https://waymaker-api-bdy6w.ondigitalocean.app/users", fetchOption)
             .then((res)=> res.json())
     }
     const PostChurch = (object) => {
@@ -42,11 +42,11 @@ export const AuthProvider = (props) =>{
             body: JSON.stringify(object)
         }
         
-        return fetch("http://localhost:8088/churches", fetchOption)
+        return fetch("https://waymaker-api-bdy6w.ondigitalocean.app/churches", fetchOption)
             .then((res)=> res.json())
     }
     const FetchCurrentUser = (id) => {
-        return fetch(`http://localhost:8088/users/${id}`)
+        return fetch(`https://waymaker-api-bdy6w.ondigitalocean.app/users/${id}`)
             .then(res => res.json())
             
     }
