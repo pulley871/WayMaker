@@ -8,22 +8,22 @@ export const PostWallProvider = (props) => {
     const [comments, setComments] = useState([])
     
     const FetchPost = (id)=>{
-        return fetch(`https://waymaker-api-bdy6w.ondigitalocean.app/wallPosts/${id}`)
+        return fetch(`https://wayaker-api.herokuapp.com/wallPosts/${id}`)
             .then(res => res.json())
             
     }
     const FetchPosts = ()=>{
-        return fetch("https://waymaker-api-bdy6w.ondigitalocean.app/wallPosts")
+        return fetch("https://wayaker-api.herokuapp.com/wallPosts")
             .then(res => res.json())
             .then((data)=>setPost(data))
     }
     const FetchComments = (postId) => {
-        return fetch(`https://waymaker-api-bdy6w.ondigitalocean.app/comments?wallPostId=${postId}`)
+        return fetch(`https://wayaker-api.herokuapp.com/comments?wallPostId=${postId}`)
             .then(res => res.json())
             
     }
     const FetchCommentForEdit = (commentId) => {
-        return fetch(`https://waymaker-api-bdy6w.ondigitalocean.app/comments/${commentId}`)
+        return fetch(`https://wayaker-api.herokuapp.com/comments/${commentId}`)
             .then(res => res.json())
             
     }
@@ -36,7 +36,7 @@ export const PostWallProvider = (props) => {
             body: JSON.stringify(object)
         }
         
-        return fetch("https://waymaker-api-bdy6w.ondigitalocean.app/comments", fetchOption)
+        return fetch("https://wayaker-api.herokuapp.com/comments", fetchOption)
             
     }
     const PostPost = (object) => {
@@ -48,11 +48,11 @@ export const PostWallProvider = (props) => {
             body: JSON.stringify(object)
         }
         
-        return fetch("https://waymaker-api-bdy6w.ondigitalocean.app/wallPosts", fetchOption)
+        return fetch("https://wayaker-api.herokuapp.com/wallPosts", fetchOption)
             
     }
     const DeletePost = (id) =>{
-        return (fetch(`https://waymaker-api-bdy6w.ondigitalocean.app/wallPosts/${id}`, {
+        return (fetch(`https://wayaker-api.herokuapp.com/wallPosts/${id}`, {
         method: "DELETE",
         headers: {
             "Content-Type": "application/json"
@@ -73,10 +73,10 @@ export const PostWallProvider = (props) => {
             })
 
         }
-        return fetch(`https://waymaker-api-bdy6w.ondigitalocean.app/wallPosts/${id}`, dataToSend)
+        return fetch(`https://wayaker-api.herokuapp.com/wallPosts/${id}`, dataToSend)
      }
      const DeleteComment = (id) =>{
-        return (fetch(`https://waymaker-api-bdy6w.ondigitalocean.app/comments/${id}`, {
+        return (fetch(`https://wayaker-api.herokuapp.com/comments/${id}`, {
         method: "DELETE",
         headers: {
             "Content-Type": "application/json"
@@ -95,7 +95,7 @@ export const PostWallProvider = (props) => {
             })
 
         }
-        return fetch(`https://waymaker-api-bdy6w.ondigitalocean.app/comments/${id}`, dataToSend)
+        return fetch(`https://wayaker-api.herokuapp.com/comments/${id}`, dataToSend)
      }
     return (<PostWallContext.Provider value={{
         FetchPosts, FetchComments,FetchCommentForEdit, FetchPost, PostComments, PostPost, DeletePost,EditWallPost,EditPostComment, DeleteComment, posts, comments

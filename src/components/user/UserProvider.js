@@ -7,32 +7,32 @@ export const UserProvider = (props) =>{
     const [userPics, setUserPics] = useState([])
     const [churchPics, setChurchPics] = useState([])
     const FetchUser = (id)=>{
-        return fetch(`https://waymaker-api-bdy6w.ondigitalocean.app/users/${id}`)
+        return fetch(`https://wayaker-api.herokuapp.com/users/${id}`)
             .then(res => res.json())
             
     }
     
     const FetchUserApplications = (id)=>{
-        return fetch(`https://waymaker-api-bdy6w.ondigitalocean.app/jobApplications?userId=${id}`)
+        return fetch(`https://wayaker-api.herokuapp.com/jobApplications?userId=${id}`)
             .then(res => res.json())
             
     }
     const FetchApplicationDetails = (id) =>{
-        return fetch(`https://waymaker-api-bdy6w.ondigitalocean.app/jobPostings/${id}?_expand=church`)
+        return fetch(`https://wayaker-api.herokuapp.com/jobPostings/${id}?_expand=church`)
             .then(res => res.json())
             
     }
     const FetchSpecificApplication = (id) =>{
-        return fetch(`https://waymaker-api-bdy6w.ondigitalocean.app/jobApplications/${id}`)
+        return fetch(`https://wayaker-api.herokuapp.com/jobApplications/${id}`)
             .then(res => res.json())
            
     }
     const FetchPictures = (userId, boolean) =>{
         if (boolean){
-            return fetch(`https://waymaker-api-bdy6w.ondigitalocean.app/churchPictures`)
+            return fetch(`https://wayaker-api.herokuapp.com/churchPictures`)
             .then(res => res.json()).then((data) => setChurchPics(data))
         }
-        return fetch(`https://waymaker-api-bdy6w.ondigitalocean.app/userPictures`)
+        return fetch(`https://wayaker-api.herokuapp.com/userPictures`)
             .then(res => res.json()).then((data) => setUserPics(data))
             
     }
@@ -45,10 +45,10 @@ export const UserProvider = (props) =>{
             body: JSON.stringify(object)
         }
         if (isChurch){
-            return fetch("https://waymaker-api-bdy6w.ondigitalocean.app/churchPictures/", fetchOption)
+            return fetch("https://wayaker-api.herokuapp.com/churchPictures/", fetchOption)
         }else{
 
-            return fetch("https://waymaker-api-bdy6w.ondigitalocean.app/userPictures/", fetchOption)
+            return fetch("https://wayaker-api.herokuapp.com/userPictures/", fetchOption)
         }
     }
     const UploadPicture = (data, id, boolean) =>{
@@ -70,6 +70,7 @@ export const UserProvider = (props) =>{
                     pictureURL: data.secure_url
                 }
                 PostUserPictureToJson(picObj, boolean)
+                
             }else{
                 const picObj = {
                     userId: id,
@@ -82,7 +83,7 @@ export const UserProvider = (props) =>{
             
     }
     const DeleteApplication = (id) =>{
-        return (fetch(`https://waymaker-api-bdy6w.ondigitalocean.app/jobApplications/${id}`, {
+        return (fetch(`https://wayaker-api.herokuapp.com/jobApplications/${id}`, {
         method: "DELETE",
         headers: {
             "Content-Type": "application/json"
@@ -101,7 +102,7 @@ export const UserProvider = (props) =>{
             })
 
         }
-        return fetch(`https://waymaker-api-bdy6w.ondigitalocean.app/jobApplications/${id}`, dataToSend)
+        return fetch(`https://wayaker-api.herokuapp.com/jobApplications/${id}`, dataToSend)
      }
     return (<UserContext.Provider value={{
         churchPics,userPics,FetchPictures,UploadPicture, FetchUser,FetchUserApplications, FetchApplicationDetails, DeleteApplication,FetchSpecificApplication, EditApplication
